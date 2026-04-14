@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+:root {
+  --background: #edf1f5;
+  --foreground: #131722;
+  --surface: #f5f6f8;
+  --card: #ffffff;
+  --muted: #6c7484;
+  --accent: #0a67d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(10, 103, 216, 0.14), transparent 32%),
+    radial-gradient(circle at 88% 8%, rgba(16, 185, 129, 0.1), transparent 18%),
+    linear-gradient(180deg, #f3f5f8 0%, #edf1f5 100%);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.38) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.38) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.3;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(10, 103, 216, 0.16);
+  color: var(--foreground);
+}
+
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 1px 1px rgba(15, 23, 42, 0.04),
+    0 18px 44px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(10, 103, 216, 0.12);
+  box-shadow:
+    0 1px 1px rgba(15, 23, 42, 0.05),
+    0 20px 54px rgba(15, 23, 42, 0.08);
+}
+
+.soft-pill {
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.section-fade {
+  animation: rise-in 720ms ease both;
+}
+
+.tag-track {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  animation: marquee 24s linear infinite;
+}
+
+.tag-track.reverse {
+  animation-direction: reverse;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-card {
+    border-radius: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bento-card,
+  .section-fade,
+  .tag-track {
+    animation: none !important;
+    transition: none !important;
+  }
+}
