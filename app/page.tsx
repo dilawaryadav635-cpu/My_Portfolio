@@ -181,7 +181,7 @@ export default function Home() {
               <div>
                 <div className="mb-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                   <div className="relative h-20 w-20 overflow-hidden rounded-[22px] border border-white/80 shadow-lg shadow-black/5">
-                    <Image src="/profile.jpg" alt="Dilawar Singh Yadav" fill className="object-cover" priority sizes="80px" />
+                    <Image src="/My_Portfolio/profile.jpg" alt="Dilawar Singh Yadav" fill className="object-cover" priority sizes="80px" />
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">Product Portfolio</p>
